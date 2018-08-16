@@ -6,3 +6,6 @@ This Visual Generator create a *docker-compose.yml* and a *rancher-compose.yml* 
 - [x] redirect-to-https-docker | [github.com](https://github.com/a6b8/redirect-to-https-docker) | [hub.docker.com](https://hub.docker.com/r/a6b8/redirect-to-https-docker/)
 - [x] redirect-to-url-docker | [github.com](https://github.com/a6b8/redirect-to-url-docker) | [hub.docker.com](https://hub.docker.com/r/a6b8/redirect-to-url-docker/)
 - [x] rancher/lb-service-haproxy | [hub.docker.com](https://hub.docker.com/r/rancher/lb-service-haproxy/)
+
+## Quickstart
+Just visit: [Generator](http://htmlpreview.github.io/?https://github.com/a6b8/yaml-generator-loadbalancer/blob/master/public/index.html)
