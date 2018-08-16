@@ -1,7 +1,7 @@
 # YAML Generator for Loadbalancing and Port Routing
 This Visual Generator create a *docker-compose.yml* and a *rancher-compose.yml* file. It helps to setup fast and secure a Infrastructure with a Rancher(Cattle) Masternode.
 
-This Generator use 4 Docker Images:
+## The Generator uses 4 diffrent Docker Images:
 - [x] placeholder-webpage-docker | [github.com](https://github.com/a6b8/placeholder-webpage-docker) | [hub.docker.com](https://hub.docker.com/r/a6b8/placeholder-webpage-docker/)
 - [x] redirect-to-https-docker | [github.com](https://github.com/a6b8/redirect-to-https-docker) | [hub.docker.com](https://hub.docker.com/r/a6b8/redirect-to-https-docker/)
 - [x] redirect-to-url-docker | [github.com](https://github.com/a6b8/redirect-to-url-docker) | [hub.docker.com](https://hub.docker.com/r/a6b8/redirect-to-url-docker/)
