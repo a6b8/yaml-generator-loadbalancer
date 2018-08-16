@@ -13,4 +13,4 @@ This Visual Generator create a *docker-compose.yml* and a *rancher-compose.yml* 
 - [x] Set Rules for non-subdomain Request (example.com) and Ip-Adress Requests.
 
 ## Quickstart
-HTML View: [a6b8/yaml-generator-loadbalancer](http://htmlpreview.github.io/?https://github.com/a6b8/yaml-generator-loadbalancer/blob/master/public/index.html)
+HTML View: [a6b8/yaml-generator-loadbalancer](http://htmlpreview.github.io/?https://github.com/a6b8/yaml-generator-loadbalancer/blob/master/index.html)
