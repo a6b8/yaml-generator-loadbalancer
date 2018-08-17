@@ -143,8 +143,6 @@ function event_central(__init=false, t) {
 	if(this.hasOwnProperty('elt')) {
 		id_current  = this.elt.id *1
 	}
-	console.log(id_current)
-console.log("-----")
   switch(true) {
   	case (id_current< 2 || __init):
   		var domain = document.getElementById(1).value
@@ -458,7 +456,6 @@ function createStringFromTemplate(template, variables) {
 }
 
 function event_download() {
-	console.log("test")
 	var vals = {
 		"rancher" : {
 			"name" : "rancher-compose.yml",
