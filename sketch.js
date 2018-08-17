@@ -137,15 +137,16 @@ function draw_inputFillValues(obj) {
 	}
 }
 
-function event_central(init=false) {
-	var id_current = -1
-	if(!init) {
+function event_central(__init=false, t) {
+
+	var id_current = 1000
+	if(this.hasOwnProperty('elt')) {
 		id_current  = this.elt.id *1
 	}
-
-  console.log(id_current)
+	console.log(id_current)
+console.log("-----")
   switch(true) {
-  	case (id_current< 2 || init):
+  	case (id_current< 2 || __init):
   		var domain = document.getElementById(1).value
   		replace = [
   			"www." + domain,
