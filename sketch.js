@@ -1,10 +1,10 @@
 var hash = {
    "meta" : {
-      "server_ip" : "127.0.0.1",
-      "domain_root" : "example.com",
-      "domain_redirect" : "",
-      "certificate" : "",
-      "start_on_create" : false,
+		"server_ip" : "127.0.0.1",
+		"domain_root" : "example.com",
+		"domain_redirect" : "",
+		"certificate" : "",
+		"start_on_create" : false,
 		"email" : "",
 		"url_image_banner" : "",
 		"left_name" : "Impressum",
@@ -59,7 +59,6 @@ var hash = {
 function setup() {
 	event_recreateYamls()
     draw_dom_init(hash)
-
     draw_inputFillValues(hash)
     event_setNewValuesToHash(hash)
     event_central(true)
