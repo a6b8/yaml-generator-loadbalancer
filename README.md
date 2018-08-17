@@ -20,9 +20,9 @@ This **Visual Generator** create a `docker-compose.yml` and a `rancher-compose.y
 ## Quickstart
 Visual Generator : [a6b8/yaml-generator-loadbalancer](http://htmlpreview.github.io/?https://github.com/a6b8/yaml-generator-loadbalancer/blob/master/index.html)
 
-## Use for Production
+## For Production use:
 
 ```
-git clone https://github.com/a6b8/yaml-generator-loadbalancer.git
-cd yaml-generator-loadbalancer
+git clone https://github.com/a6b8/yaml-generator-loadbalancer.git && cd yaml-generator-loadbalancer
 http-server
+```
