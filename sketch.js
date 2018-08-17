@@ -22,7 +22,7 @@ var hash = {
    		"haproxy" : {
    			"image_name" : "global-loadbalancer",
    			"docker_image" : "rancher/lb-service-haproxy",
-   			"docker_version" : "v0.7.15"
+   			"docker_version" : "v0.9.4"
    		},
    		"redirect-to-https" : {
    			"image_name" : "redirect-to-https",
@@ -219,7 +219,8 @@ function docker_service_other(obj, val) {
 	var result = ""
 	var vals = {
 		"docker_image" : obj["images"][val]["docker_image"] + ":" + obj["images"][val]["docker_version"],
-		"domain_redirect" : obj["meta"]["domain_redirect"]
+		"domain_redirect" : obj["meta"]["domain_redirect"],
+		"redirect_name" : "redirect-to-" + obj["meta"]["domain.redirect"].split(".").join("-")
 	}
 	switch(val) {
 		case "redirect-to-https":
@@ -229,7 +230,7 @@ function docker_service_other(obj, val) {
 			break;
 		case "redirect-to-url":
 			var __txt = `
-  redirect-to-url:
+  {redirect_name}:
     image: {docker_image}
     environment:
       - SERVER_REDIRECT_SCHEME=https
