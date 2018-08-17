@@ -36,7 +36,7 @@ var hash = {
    		},
    		"placeholder" : {
    			"image_name" : "placeholder-",
-   			"docker_image" : "a6b8/placeholder-webpage-dockers",
+   			"docker_image" : "a6b8/placeholder-webpage-docker",
    			"docker_version" : "latest"
    		}
    },
