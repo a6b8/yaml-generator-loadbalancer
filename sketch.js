@@ -300,8 +300,8 @@ function docker_lb(obj) {
 	var __txt = `
 version: '2'
 services:
-  image: {image_name}:
-    {docker_image}
+  {image_name}:
+    image: {docker_image}
     - 443:443/tcp
     - 80:80/tcp`;
 	result = createStringFromTemplate(__txt, vals);
