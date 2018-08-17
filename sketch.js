@@ -147,7 +147,7 @@ function event_central(__init=false, t) {
   		var domain = document.getElementById(1).value
   		replace = [
   			"www." + domain,
-  			"*." + domain,
+  			"wildcard-" + domain.split(".").join("-"),
   			"-1",
   			"hello@" + domain,
   			"https://init." + domain + "/company-banner-small.jpg",
@@ -194,10 +194,12 @@ function event_recreateYamls() {
 	hash["yamls"][0]["__txt"] += rancher_lb_port_rules(hash)[0]
 	hash["yamls"][0]["__txt"] += rancher_redirects(hash, services)
 	hash["yamls"][0]["__txt"] += rancher_services(hash, services)
+	hash["yamls"][0]["__txt"] = hash["yamls"][0]["__txt"].replace(/\t/g, "  ")
 
     hash["yamls"][1]["__txt"] = ""
     hash["yamls"][1]["__txt"] += docker_lb(hash)
     hash["yamls"][1]["__txt"] += docker_services(hash, services)
+    hash["yamls"][1]["__txt"] = hash["yamls"][1]["__txt"].replace(/\t/g, "  ")
 }
 
 function draw_recreateCodes() {
@@ -220,7 +222,7 @@ function docker_service_other(obj, val) {
 	var vals = {
 		"docker_image" : obj["images"][val]["docker_image"] + ":" + obj["images"][val]["docker_version"],
 		"domain_redirect" : obj["meta"]["domain_redirect"],
-		"redirect_name" : "redirect-to-" + obj["meta"]["domain.redirect"].split(".").join("-")
+		"redirect_name" : "redirect-to-" + obj["meta"]["domain_redirect"].split(".").join("-")
 	}
 	switch(val) {
 		case "redirect-to-https":
@@ -313,7 +315,7 @@ services:
 function rancher_lb(obj, vals) {
 	var vals = {
 		"image_name" : obj["images"]["haproxy"]["image_name"],
-		"certificate" : obj["meta"]["certificate"]
+		"certificate" : obj["meta"]["certificate"].split(".").join("-")
 	}
 	var result = ""
 	var __txt = `
@@ -321,7 +323,7 @@ version: '2'
 services:
   {image_name}:
     scale: 1
-    start_on_create: true
+    start_on_create: false
     lb_config:
       certs: []
       default_cert: {certificate}
@@ -346,6 +348,9 @@ function rancher_services(obj, vals) {
 
 function rancher_service(obj, vals) {
 	var result = ""
+	if(vals["image_name"].indexOf("redirect-to-url") != -1) {
+		vals["image_name"] = "redirect-to-" + obj["meta"]["domain_redirect"].split(".").join("-")
+	}
 	var __txt = `
   {image_name}:
     scale: 1
@@ -375,23 +380,23 @@ function rancher_redirect(obj, index, val) {
 		"domain_redirect" : obj["meta"]["domain_redirect"],
 		"index_1" : ((index*2) + 1),
 		"index_2" : ((index*2) + 2),
-		"redirect_docker" : obj["images"]["redirect-to-url"]["image_name"]
+		"redirect_docker" : "redirect-to-" + obj["meta"]["domain_redirect"].split(".").join("-")
 	}
 
 	var result = ""
 	var __txt = `
-	  - hostname: {hostname}
-	    priority: {index_1}
-	    protocol: https
-	    service: {redirect_docker}
-	    source_port: 443
-	    target_port: 80
-	  - hostname: {hostname}
-	    priority: {index_2}
-	    protocol: http
-	    service: {redirect_docker}
-	    source_port: 80
-	    target_port: 80`;
+	    - hostname: {hostname}
+	      priority: {index_1}
+	      protocol: https
+	      service: {redirect_docker}
+	      source_port: 443
+	      target_port: 80
+	    - hostname: {hostname}
+	      priority: {index_2}
+	      protocol: http
+	      service: {redirect_docker}
+	      source_port: 80
+	      target_port: 80`;
 
 	result = createStringFromTemplate(__txt, vals)
 	return result
@@ -418,19 +423,19 @@ function rancher_lb_port_rules(obj) {
 
 function rancher_lb_port_rule(index, vals) {   
 	var __txt_1 = `
-	  - hostname: {hostname}
-	    priority: {priority}
-	    protocol: https
-	    service: {placeholder_image_name}
-	    source_port: 443
-	    target_port: 80`;
+	    - hostname: {hostname}
+	      priority: {priority}
+	      protocol: https
+	      service: {placeholder_image_name}
+	      source_port: 443
+	      target_port: 80`;
 	var __txt_2 = `
-	  - hostname: {hostname}
-	    priority: {priority}
-	    protocol: http
-	    service: {redirect_name}
-	    source_port: 80
-	    target_port: 80`;
+	    - hostname: {hostname}
+	      priority: {priority}
+	      protocol: http
+	      service: {redirect_name}
+	      source_port: 80
+	      target_port: 80`;
 
 	render = {
 		"texts" : [ __txt_1, __txt_2 ],
