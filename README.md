@@ -1,5 +1,5 @@
-# YAML Generator for Loadbalancing and Port Routing
-This **Visual** Generator create a *docker-compose.yml* and a *rancher-compose.yml* file. It helps to setup fast and secure a Infrastructure with a Rancher(Cattle) Masternode.
+# Visual YAML Generator for creating a Boilerplate Loadbalancing & Port Routing Infrastructure
+This **Visual Generator** create a *docker-compose.yml* and a *rancher-compose.yml* file. It helps to setup fast and secure a Infrastructure with a Rancher(Cattle) Masternode.
 
 ## The Generator uses 4 diffrent Docker Images:
 - [x] placeholder-webpage-docker | [github.com](https://github.com/a6b8/placeholder-webpage-docker) | [hub.docker.com](https://hub.docker.com/r/a6b8/placeholder-webpage-docker/)
@@ -12,8 +12,13 @@ This **Visual** Generator create a *docker-compose.yml* and a *rancher-compose.y
 - [x] Sets up a Placeholder Webpage
 - [x] Set Rules for non-subdomain Request (example.com) and Ip-Adress Requests.
 
+## Libraries
+- [x] P5js - Html Dom
+- [x] JSZip - Creates a Zip Files
+- [x] FileServer.js - Helps to Download to yaml files
+
 ## Quickstart
-Preview : [a6b8/yaml-generator-loadbalancer](http://htmlpreview.github.io/?https://github.com/a6b8/yaml-generator-loadbalancer/blob/master/index.html)
+Visual Generator : [a6b8/yaml-generator-loadbalancer](http://htmlpreview.github.io/?https://github.com/a6b8/yaml-generator-loadbalancer/blob/master/index.html)
 
 ## Use for Production
 
