@@ -250,7 +250,7 @@ function docker_service_placeholder(obj, val) {
 		"pagetitle" : str.split("-").join("."),
 		"headline" : str.split("-").join("."),
 		"description" : "This Page is under Construction",
-		"url_homepage" : obj["meta"]["domain_redirect"],
+		"url_homepage" : "https://" + obj["meta"]["domain_redirect"],
 		"email" : obj["meta"]["email"],
 		"url_image" : obj["meta"]["url_image_banner"],
 		"url_footer_left_name" : obj["meta"]["left_name"],
